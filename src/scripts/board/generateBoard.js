@@ -41,7 +41,7 @@ export const getUpdatedBoardAfterMatch = (board) => {
 
   console.log(">>","Match found, tiles removed...");
   matches.forEach(({ index, color }) =>
-    console.log(`">>","Index ${index}, Couleur ${color}`)
+    console.log(`">>","Index ${index}, Color ${color}`)
   );
 
   // Deletion of marked tiles (set to null)
@@ -73,7 +73,7 @@ export const getUpdatedBoardAfterMatch = (board) => {
     console.log(`Index: ${index}, Color: ${color !== null ? color : "❌, (null)"}`)
   );
 
-  // Remplissage des cases vides avec de nouvelles couleurs
+  // Fill empty cells with new colors
   for (let i = 0; i < BOARD_SIZE; i++) {
     if (newBoard[i] === null) {
       newBoard[i] = colorGenerator();
