@@ -30,7 +30,7 @@ const GameScreen = ({ user }) => {
 
     console.log("matches", matches);
 
-    // Regrouper les tuiles par couleur et par alignement
+    // Group tiles by color and alignment
     const groupedMatches = [];
     let currentMatch = [];
 
@@ -49,7 +49,7 @@ const GameScreen = ({ user }) => {
 
     console.log("groupedMatches", groupedMatches);
 
-    // Appliquer le scoring basé sur la taille des groupes
+    // Apply scoring based on group size
     groupedMatches.forEach((match) => {
       console.log("match", match);
 
