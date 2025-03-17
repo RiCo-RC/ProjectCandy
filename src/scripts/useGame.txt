@@ -1,0 +1,77 @@
+import React, { useCallback, useEffect, useState } from "react";
+
+import { loadGameData, saveGameData } from "@utils";
+
+import generateBoard from "./board/generateBoard";
+
+//-- Make the game persistent even after a refresh --\\
+const useGame = () => {
+  const [board, setBoard] = useState([]);
+  const [score, setScore] = useState(0);
+  const [level, setLevel] = useState(1);
+  const [lifeLeft, setLifeLeft] = useState(3);
+  const [progress, setProgress] = useState(50);
+  const previousBoard = useRef([]);
+
+  //-- LOAD DATE --\\
+  const loadData = useCallback(async () => {
+    const savedBoard = await loadGameData("board", generateBoard());
+    const savedScore = await loadGameData("score", 0);
+    const savedLevel = await loadGameData("level", 1);
+    const savedLifeLeft = await loadGameData("lifeLeft", 3);
+    const savedProgress = await loadGameData("progress", 50);
+
+    setBoard(savedBoard);
+    setScore(savedScore);
+    setLevel(savedLevel);
+    setLifeLeft(savedLifeLeft);
+    setProgress(savedProgress);
+  }, []);
+
+  useEffect(() => {
+    loadData();
+  }, [loadData]);
+
+  //-- SAVE DATE --\\
+  useEffect(() => {
+    if (board.length > 0) {
+      saveGameData(board, score, level, lifeLeft, progress);
+    }
+  }, [board, score, level, lifeLeft, progress]);
+
+  // Match & Refill
+  useEffect(() => {
+    const timer = setInterval(() => {
+      if (board.length > 0) {
+        const [updatedBoard, scoreGain] = monitorMatches(
+          board,
+          previousBoard.current
+        );
+        if (scoreGain > 0) {
+          setBoard(updatedBoard);
+          setScore((prevScore) => prevScore + scoreGain);
+          previousBoard.current = updatedBoard;
+        } else {
+          setBoard((prev) => refillBoard(prev));
+        }
+      }
+    }, 200);
+
+    return () => clearInterval(timer);
+  }, [board, score]);
+
+  return {
+    board,
+    setBoard,
+    score,
+    setScore,
+    level,
+    setLevel,
+    lifeLeft,
+    setLifeLeft,
+    progress,
+    setProgress,
+  };
+};
+
+export default useGame;

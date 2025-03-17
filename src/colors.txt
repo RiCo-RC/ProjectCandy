@@ -1,0 +1,16 @@
+Noir profond (#0B0C10) – Pour représenter l’obscurité de l’espace.
+Bleu cosmos (#1B1F3B) – Inspiré des nébuleuses et du ciel nocturne.
+Violet nébuleuse (#5D3FD3) – Pour les nuages de gaz interstellaires.
+Bleu étoile (#4682B4) – Évoque l’éclat des jeunes étoiles.
+Argent lunaire (#C0C0C0) – Pour la surface de la Lune et les reflets métalliques des vaisseaux spatiaux.
+Orange solaire (#FF4500) – Inspiré du soleil et des étoiles en fusion.
+Rose galaxie (#FF1493) – Comme les magnifiques teintes des galaxies lointaines.
+
+"#FFD700", // Jaune supernova – Explosion d’étoile
+"#00FFFF", // Bleu azur cosmique – Pour représenter les trous bleus profonds
+"#8A2BE2", // Indigo spatial – Évoque l’univers lointain
+"#FF6347", // Rouge météore – Inspiré des météorites en combustion
+"#7FFFD4", // Turquoise comète – Pour les comètes glacées
+"#DC143C", // Pourpre pulsar – Couleur des étoiles à neutrons ultra-denses
+"#00FF7F", // Vert néon alien – Rappelant les représentations de la vie extraterrestre
+"#FF69B4"  // Magenta cosmique – Inspiré des aurores boréales et des galaxies lointaines
